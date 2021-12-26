@@ -8,6 +8,10 @@ import { nextFrame } from "@tensorflow/tfjs";
 import {drawRect} from "./utilities"; 
 
 function App() {
+
+
+  let scoreB=0;
+
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -52,18 +56,25 @@ function App() {
       //Predictions console.log(await obj[6].array())
       //console.log(await obj[6].array())
 
-      console.log(await obj[6].array())
+      //console.log(await obj[6].array())
       
       const boxes = await obj[2].array()
       const classes = await obj[6].array()
       const scores = await obj[7].array()
+
+      console.log('Classes are: '+classes[0][0]);
+
+      if (classes[0][0]===1){
+        scoreB++;
+      }
+      console.log('Score is ' +scoreB);
     
       // Draw mesh
       const ctx = canvasRef.current.getContext("2d");
 
       // 5. TODO - Update drawing utility
       // drawSomething(obj, ctx)  
-      requestAnimationFrame(()=>{drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)}); 
+      requestAnimationFrame(()=>{drawRect(boxes[0], classes[0], scores[0], 0.85, videoWidth, videoHeight, ctx)}); 
 
       tf.dispose(img)
       tf.dispose(resized)
