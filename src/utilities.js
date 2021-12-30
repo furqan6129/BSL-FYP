@@ -1,13 +1,26 @@
 // Define our labelmap
 const labelMap = {
-    1:{name:'b', color:'red'},
-    2:{name:'c', color:'yellow'},
+    1:{name:'a', color:'red'},
+    2:{name:'b', color:'yellow'},
+    3:{name:'c', color:'red'},
+    4:{name:'d', color:'blue'},
+    5:{name:'e', color:'lime'},
+    6:{name:'f', color:'green'}
 }
+
+// let scoreB=0;
+
 
 // Define a drawing function
 export const drawRect = (boxes, classes, scores, threshold, imgWidth, imgHeight, ctx)=>{
     for(let i=0; i<=boxes.length; i++){
         if(boxes[i] && classes[i] && scores[i]>threshold){
+
+
+            // if (classes[i]==1){
+            //     scoreB++;
+            // }
+
             // Extract variables
             const [y,x,height,width] = boxes[i]
             const text = classes[i]
@@ -25,4 +38,5 @@ export const drawRect = (boxes, classes, scores, threshold, imgWidth, imgHeight,
             ctx.stroke()
         }
     }
+    // console.log(scoreB);
 }

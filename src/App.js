@@ -7,10 +7,12 @@ import { nextFrame } from "@tensorflow/tfjs";
 // 2. TODO - Import drawing utility here
 import {drawRect} from "./utilities"; 
 
+let score=0;
+let classesList=Array(1,2,3,4,5,6);
+
+let challengeClass=classesList[Math.floor(Math.random()*classesList.length)];
+
 function App() {
-
-
-  let scoreB=0;
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
@@ -18,8 +20,8 @@ function App() {
   // Main function
   const runCoco = async () => {
     // 3. TODO - Load network 
-    const net = await tf.loadGraphModel('https://bsl0.s3.eu-gb.cloud-object-storage.appdomain.cloud/model.json')
-    
+    const net = await tf.loadGraphModel('https://bslmodel2.s3.eu-gb.cloud-object-storage.appdomain.cloud/model.json')
+
     // Loop and detect hands
     setInterval(() => {
       detect(net);
@@ -53,28 +55,36 @@ function App() {
       const expanded = casted.expandDims(0)
       const obj = await net.executeAsync(expanded)
 
-      //Predictions console.log(await obj[6].array())
-      //console.log(await obj[6].array())
 
-      //console.log(await obj[6].array())
+
       
-      const boxes = await obj[2].array()
-      const classes = await obj[6].array()
-      const scores = await obj[7].array()
+      const boxes = await obj[6].array()
+      const classes = await obj[2].array()
+      const scores = await obj[3].array()
 
       console.log('Classes are: '+classes[0][0]);
+      console.log('Scores are: '+scores[0][0]);
 
-      if (classes[0][0]===1){
-        scoreB++;
+
+let detectedClass=classes[0][0];
+
+let classScore=scores[0][0];
+
+console.log('Challenge Class is: '+challengeClass);
+
+
+      if (detectedClass===challengeClass && classScore>0.65){
+        score++;
+        challengeClass=classesList[Math.floor(Math.random()*classesList.length)];        
       }
-      console.log('Score is ' +scoreB);
+      console.log('Score is ' +score);
     
       // Draw mesh
       const ctx = canvasRef.current.getContext("2d");
 
       // 5. TODO - Update drawing utility
       // drawSomething(obj, ctx)  
-      requestAnimationFrame(()=>{drawRect(boxes[0], classes[0], scores[0], 0.85, videoWidth, videoHeight, ctx)}); 
+      requestAnimationFrame(()=>{drawRect(boxes[0], classes[0], scores[0], 0.6, videoWidth, videoHeight, ctx)}); 
 
       tf.dispose(img)
       tf.dispose(resized)
@@ -87,8 +97,13 @@ function App() {
 
   useEffect(()=>{runCoco()},[]);
 
-  return (
+  return (   
+
     <div className="App">
+      <letter className="Current-letter">
+        (challengeClass.value)       
+        </letter>
+
       <header className="App-header">
         <Webcam
           ref={webcamRef}
@@ -122,6 +137,11 @@ function App() {
         />
       </header>
     </div>
+
+ 
+
+
+
   );
 }
 
