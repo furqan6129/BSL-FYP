@@ -7,12 +7,31 @@ import { nextFrame } from "@tensorflow/tfjs";
 // 2. TODO - Import drawing utility here
 import {drawRect} from "./utilities"; 
 
-let score=0;
+let scoreVar=0;
 let classesList=Array(1,2,3,4,5,6);
 
-let challengeClass=classesList[Math.floor(Math.random()*classesList.length)];
+//let challengeClass=classesList[Math.floor(Math.random()*classesList.length)];
 
 function App() {
+
+  const [score,setScore]=useState(0)
+  
+  const [challengeClass,setChallenge]=useState(classesList[Math.floor(Math.random()*classesList.length)])
+
+  let challengeClass2=challengeClass
+
+
+
+
+
+
+  function incrementScore(){
+    setScore(prevScore =>prevScore+1)
+    setChallenge(prevChallenge =>classesList[Math.floor(Math.random()*classesList.length)])
+    challengeClass2=challengeClass
+    scoreVar++
+  }
+
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
@@ -73,11 +92,14 @@ let classScore=scores[0][0];
 console.log('Challenge Class is: '+challengeClass);
 
 
-      if (detectedClass==challengeClass && classScore>0.65){
-        score++;
-        challengeClass=classesList[Math.floor(Math.random()*classesList.length)];        
+      if (detectedClass===challengeClass && classScore>0.65){
+        //score++;
+
+        incrementScore()
+        //challengeClass=classesList[Math.floor(Math.random()*classesList.length)];   
+        
       }
-      console.log('Score is ' +score);
+      console.log({scoreVar});
     
       // Draw mesh
       const ctx = canvasRef.current.getContext("2d");
@@ -101,7 +123,7 @@ console.log('Challenge Class is: '+challengeClass);
 
     <div className="App">
       <letter className="Current-letter">
-        <h1>Challenge is: {challengeClass} Score: {score}</h1>      
+        <h1>Score is: {score}    ...........................................................   Challenge: {challengeClass}</h1>      
         </letter>
 
       <header className="App-header">
