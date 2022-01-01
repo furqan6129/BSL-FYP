@@ -73,7 +73,7 @@ let classScore=scores[0][0];
 console.log('Challenge Class is: '+challengeClass);
 
 
-      if (detectedClass===challengeClass && classScore>0.65){
+      if (detectedClass==challengeClass && classScore>0.65){
         score++;
         challengeClass=classesList[Math.floor(Math.random()*classesList.length)];        
       }
@@ -101,7 +101,7 @@ console.log('Challenge Class is: '+challengeClass);
 
     <div className="App">
       <letter className="Current-letter">
-        (challengeClass.value)       
+        <h1>Challenge is: {challengeClass} Score: {score}</h1>      
         </letter>
 
       <header className="App-header">
