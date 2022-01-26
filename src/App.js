@@ -3,35 +3,28 @@ import React, { useRef, useState, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
 import "./App.css";
+import Header from "./Header.js"
 import { nextFrame } from "@tensorflow/tfjs";
 // 2. TODO - Import drawing utility here
 import {drawRect} from "./utilities"; 
 
-let scoreVar=0;
-let classesList=Array(1,2,3,4,5,6);
 
-//let challengeClass=classesList[Math.floor(Math.random()*classesList.length)];
-
-function App() {
-
-  const [score,setScore]=useState(0)
-  
-  const [challengeClass,setChallenge]=useState(classesList[Math.floor(Math.random()*classesList.length)])
-
-  let challengeClass2=challengeClass
+var challenge2=0;
 
 
+const App = (props) => {
 
 
+  challenge2=props.challenge;
+  console.log("Challenge 2 is: "+challenge2);
 
-
-  function incrementScore(){
-    setScore(prevScore =>prevScore+1)
-    setChallenge(prevChallenge =>classesList[Math.floor(Math.random()*classesList.length)])
-    challengeClass2=challengeClass
-    scoreVar++
+  const getNewChallenge =() =>{
+    return challenge2;
   }
 
+
+
+ 
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
@@ -85,21 +78,28 @@ function App() {
       console.log('Scores are: '+scores[0][0]);
 
 
-let detectedClass=classes[0][0];
+      let detectedClass=classes[0][0];
 
-let classScore=scores[0][0];
+      let classScore=scores[0][0];
+      
+      var latestChallenge=getNewChallenge();
+      //console.log("Score printing from the App is"+ score)
+      //console.log("Challenge from the App is"+challenge)
+      console.log("Challenge is "+latestChallenge)
 
-console.log('Challenge Class is: '+challengeClass);
 
-
-      if (detectedClass===challengeClass && classScore>0.65){
+      if (detectedClass==latestChallenge && classScore>0.65){
         //score++;
+        console.log("About to call the super method");
+        props.newChallenge();
 
-        incrementScore()
+        
         //challengeClass=classesList[Math.floor(Math.random()*classesList.length)];   
         
       }
-      console.log({scoreVar});
+      
+
+
     
       // Draw mesh
       const ctx = canvasRef.current.getContext("2d");
@@ -119,12 +119,12 @@ console.log('Challenge Class is: '+challengeClass);
 
   useEffect(()=>{runCoco()},[]);
 
+
+
+
   return (   
 
     <div className="App">
-      <letter className="Current-letter">
-        <h1>Score is: {score}    ...........................................................   Challenge: {challengeClass}</h1>      
-        </letter>
 
       <header className="App-header">
         <Webcam
@@ -143,6 +143,8 @@ console.log('Challenge Class is: '+challengeClass);
           }}
         />
 
+
+
         <canvas
           ref={canvasRef}
           style={{
@@ -157,6 +159,10 @@ console.log('Challenge Class is: '+challengeClass);
             height: 480,
           }}
         />
+
+
+
+
       </header>
     </div>
 
@@ -165,6 +171,10 @@ console.log('Challenge Class is: '+challengeClass);
 
 
   );
-}
+
+};
+
 
 export default App;
+
+
