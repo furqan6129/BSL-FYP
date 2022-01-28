@@ -6,7 +6,8 @@ import "./App.css";
 import Header from "./Header.js"
 import { nextFrame } from "@tensorflow/tfjs";
 // 2. TODO - Import drawing utility here
-import {drawRect} from "./utilities"; 
+import {drawRect} from "./utilities";
+import 'bootstrap/dist/css/bootstrap.css';
 
 
 var challenge2=0;
@@ -16,7 +17,7 @@ const App = (props) => {
 
 
   challenge2=props.challenge;
-  console.log("Challenge 2 is: "+challenge2);
+  //console.log("Challenge 2 is: "+challenge2);
 
   const getNewChallenge =() =>{
     return challenge2;
@@ -74,8 +75,8 @@ const App = (props) => {
       const classes = await obj[2].array()
       const scores = await obj[3].array()
 
-      console.log('Classes are: '+classes[0][0]);
-      console.log('Scores are: '+scores[0][0]);
+      //console.log('Classes are: '+classes[0][0]);
+      //console.log('Scores are: '+scores[0][0]);
 
 
       let detectedClass=classes[0][0];
@@ -85,13 +86,14 @@ const App = (props) => {
       var latestChallenge=getNewChallenge();
       //console.log("Score printing from the App is"+ score)
       //console.log("Challenge from the App is"+challenge)
-      console.log("Challenge is "+latestChallenge)
+      //console.log("Challenge is "+latestChallenge)
 
 
       if (detectedClass==latestChallenge && classScore>0.65){
         //score++;
-        console.log("About to call the super method");
+        //console.log("About to call the super method");
         props.newChallenge();
+        props.updateScore();
 
         
         //challengeClass=classesList[Math.floor(Math.random()*classesList.length)];   

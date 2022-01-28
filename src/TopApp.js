@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import App from "./App.js"
+import Header from "./Header.js"
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 let classesList=Array(1,2,3,4,5,6);
 
 class TopApp extends Component{
 
         state = {
-          score: '0',challenge:classesList[Math.floor(Math.random()*classesList.length)],
+          score: 0 ,challenge:classesList[Math.floor(Math.random()*classesList.length)],
         };
 
         constructor(){
@@ -23,8 +26,12 @@ class TopApp extends Component{
             //const challenge=classesList[Math.floor(Math.random()*classesList.length)];
             this.setState({ challenge: classesList[Math.floor(Math.random()*classesList.length)]} )
 
-            console.log("Generate new challenge has been called from the top class");
+            //console.log("Generate new challenge has been called from the top class");
         };
+
+        incrementScore(){
+            this.setState({score: this.state.score + 1 })
+        }
 
 
     render(){
@@ -32,12 +39,17 @@ class TopApp extends Component{
         return (
 
         <div>
-            Score is: {this.state.score}
-            <span>Challenge is{this.state.challenge}</span>
+            {/* Score is: {this.state.score}
+            <span>Challenge is: {this.state.challenge}</span> */}
+            <Header
+                score={this.state.score}
+                challenge={this.state.challenge}
+            />
             <App
             challenge={this.state.challenge}
             score={this.state.score}
             newChallenge={() => this.generateNewChallenge()}
+            updateScore={() => this.incrementScore()}
             
             />
         </div>
