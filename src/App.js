@@ -73,10 +73,18 @@ const App = (props) => {
       
       const boxes = await obj[6].array()
       const classes = await obj[2].array()
-      const scores = await obj[3].array()
+      const scores = await obj[1].array()
 
-      //console.log('Classes are: '+classes[0][0]);
-      //console.log('Scores are: '+scores[0][0]);
+
+
+      // console.log(classes);
+      console.log(scores);
+      // console.log(boxes);
+
+
+      // console.log('Classes are: '+classes[0][0]);//classes are fine
+      console.log('Scores are: '+scores[0][0]);
+      // console.log('Boxes are:'+boxes[0][0]);
 
 
       let detectedClass=classes[0][0];
@@ -89,11 +97,12 @@ const App = (props) => {
       //console.log("Challenge is "+latestChallenge)
 
 
-      if (detectedClass==latestChallenge && classScore>0.65){
+      if (detectedClass==latestChallenge && classScore>0.6){
         //score++;
         //console.log("About to call the super method");
         props.newChallenge();
         props.updateScore();
+        
 
         
         //challengeClass=classesList[Math.floor(Math.random()*classesList.length)];   
@@ -107,7 +116,8 @@ const App = (props) => {
       const ctx = canvasRef.current.getContext("2d");
 
       // 5. TODO - Update drawing utility
-      // drawSomething(obj, ctx)  
+      // drawSomething(obj, ctx) 
+
       requestAnimationFrame(()=>{drawRect(boxes[0], classes[0], scores[0], 0.6, videoWidth, videoHeight, ctx)}); 
 
       tf.dispose(img)
@@ -162,20 +172,12 @@ const App = (props) => {
           }}
         />
 
-
-
-
       </header>
     </div>
 
- 
-
-
-
-  );
+   );
 
 };
-
 
 export default App;
 

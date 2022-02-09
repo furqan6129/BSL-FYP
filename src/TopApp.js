@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import App from "./App.js"
 import Header from "./Header.js"
+import CountDown from "./CountDown.js"
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-let classesList=Array(1,2,3,4,5,6);
+let classesList=Array(1,2,3,4,5);
 
 class TopApp extends Component{
 
@@ -31,6 +32,9 @@ class TopApp extends Component{
 
         incrementScore(){
             this.setState({score: this.state.score + 1 })
+            // window.location="/";
+
+            
         }
 
 

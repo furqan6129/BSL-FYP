@@ -3,29 +3,19 @@
   color: green;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .Current-letter{
 
-  color: green;
+  color: blue;
   font-size: small;
-  color: prink;
+  color: pink;
   flex-direction: column;
   align-items: left;
 
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #663300;
   min-height: 92.8vh;
   display: flex;
   flex-direction: column;
@@ -39,11 +29,3 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

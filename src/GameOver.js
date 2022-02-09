@@ -3,24 +3,23 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import "./Welcome.css";
+import "./GameOver.css";
 
 
 
-class Welcome extends Component{
+class GameOver extends Component{
 
 render(){
   
 
     return (
      
-        <div class="background">
-                          <a href="/TopApp" class="button button4">Play</a>
-
+        <div class="main-body">
+                     <h1>Game Over!<br></br> You Scored: {this.prop}</h1>
         </div>
 
 
     )
 }
 }
-export default Welcome
+export default GameOver
