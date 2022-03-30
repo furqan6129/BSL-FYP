@@ -39,17 +39,14 @@ export default class CountDown extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         //console.log("Score from Countdown is:"+this.props.score)
 
-        if (this.state.count===0){
-            //this.updateEnd()
-            window.location="/GameOver";
-        }
+        // if (this.state.count===0){
+        //     //this.updateEnd()
+        //     window.location="/GameOver";
+        // }
 
         if (prevState.count !== this.state.count && this.state.count === 0) {
             clearInterval(this.timer);
-            if (this.props.onTimesup) {
-                this.props.onTimesup();
-                
-            }
+
         }
     }
 

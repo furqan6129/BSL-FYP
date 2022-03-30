@@ -15,7 +15,7 @@ render(){
     return (
      
         <div class="main-body">
-                     <h1>Game Over!<br></br> You Scored: {this.prop}</h1>
+                     <h1>Game Over!<br></br> You Scored: {this.props.score}</h1>
         </div>
 
 

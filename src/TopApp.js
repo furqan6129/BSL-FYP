@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import App from "./App.js"
 import Header from "./Header.js"
-import CountDown from "./CountDown.js"
 import 'bootstrap/dist/css/bootstrap.css';
+import GameOver from "./GameOver.js"
 
 
 let classesList=Array(1,2,3,4,5);
@@ -10,8 +10,38 @@ let classesList=Array(1,2,3,4,5);
 class TopApp extends Component{
 
         state = {
-          score: 0 ,challenge:classesList[Math.floor(Math.random()*classesList.length)],
+          score: 2 ,challenge:classesList[Math.floor(Math.random()*classesList.length)], count:5,
         };
+
+
+        componentDidMount() {
+            this.timer = setInterval(() => {
+                let { count } = this.state;
+                this.setState({
+                    count: count - 1
+                })
+            }, 1000)
+        }
+
+
+        componentDidUpdate(prevProps, prevState, snapshot) {
+            //console.log("Score from Countdown is:"+this.props.score)
+    
+            // if (this.state.count===0){
+            //     //this.updateEnd()
+            //     window.location="/GameOver";
+            // }
+    
+            if (prevState.count !== this.state.count && this.state.count === 0) {
+                clearInterval(this.timer);
+    
+            }
+        }
+
+
+        fmtMSS(s) { return (s - (s %= 60)) / 60 + (9 < s ? ':' : ':0') + s }
+
+
 
         constructor(){
             super();
@@ -40,6 +70,14 @@ class TopApp extends Component{
 
     render(){
 
+        if (this.state.count===0){
+
+            return (
+                <GameOver score={this.state.score}></GameOver>
+            )
+        }
+        else{
+
         return (
 
         <div>
@@ -48,6 +86,7 @@ class TopApp extends Component{
             <Header
                 score={this.state.score}
                 challenge={this.state.challenge}
+                count={this.fmtMSS(this.state.count)}
             />
             <App
             challenge={this.state.challenge}
@@ -58,6 +97,7 @@ class TopApp extends Component{
             />
         </div>
         )
+    }
     }
 
 
