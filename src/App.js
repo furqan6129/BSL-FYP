@@ -71,19 +71,22 @@ const App = (props) => {
 
 
       
-      const boxes = await obj[6].array()
-      const classes = await obj[2].array()
+      const boxes = await obj[4].array()
+      const classes = await obj[5].array()
       const scores = await obj[1].array()
 
+      //const temp =await obj[8].array()
+      //console.log(temp)
 
 
-      // console.log(classes);
-      console.log(scores);
-      // console.log(boxes);
+
+       //console.log(classes);
+      //console.log(scores);
+       console.log(boxes);
 
 
       // console.log('Classes are: '+classes[0][0]);//classes are fine
-      console.log('Scores are: '+scores[0][0]);
+      //console.log('Scores are: '+scores[0][0]);
       // console.log('Boxes are:'+boxes[0][0]);
 
 
@@ -97,7 +100,7 @@ const App = (props) => {
       //console.log("Challenge is "+latestChallenge)
 
 
-      if (detectedClass==latestChallenge && classScore>0.6){
+      if (detectedClass==latestChallenge && classScore>0.65){
         //score++;
         //console.log("About to call the super method");
         props.newChallenge();
@@ -118,7 +121,7 @@ const App = (props) => {
       // 5. TODO - Update drawing utility
       // drawSomething(obj, ctx) 
 
-      requestAnimationFrame(()=>{drawRect(boxes[0], classes[0], scores[0], 0.6, videoWidth, videoHeight, ctx)}); 
+      requestAnimationFrame(()=>{drawRect(boxes[0], classes[0], scores[0], 0.65, videoWidth, videoHeight, ctx)}); 
 
       tf.dispose(img)
       tf.dispose(resized)

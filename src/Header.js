@@ -55,7 +55,7 @@ else{
           <a  class="nav-link active" aria-current="page">Challenge: {this.props.challenge}</a>
           <a class="nav-link active" aria-current="page">Score: {this.props.score}</a>
           {/* <a class="nav-link active" aria-current="page"> Time Remaining: <CountDown score={this.props.score} duration={20} sendData={this.getData}/> */}
-          <a class="nav-link active" aria-current="page"> Time Remaining: <CountDown score={this.props.score} duration={30} />
+          <a class="nav-link active" aria-current="page"> Time Remaining: <CountDown score={this.props.score} duration={1000} />
             </a>
 
         </header>
