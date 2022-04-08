@@ -6,12 +6,28 @@ import GameOver from "./GameOver.js"
 
 
 let classesList=Array(1,2,3,4,5);
+let classListAlphabets=Array("A","B","C","D","E","F");
+//let classesList=Array("A","B","C","D","E");
 
 class TopApp extends Component{
 
         state = {
-          score: 2 ,challenge:classesList[Math.floor(Math.random()*classesList.length)], count:5,
+          score: 0 ,challenge:classesList[Math.floor(Math.random()*classesList.length)], count:60,
         };
+
+
+
+        generateNewChallenge(){
+            //const challenge=classesList[Math.floor(Math.random()*classesList.length)];
+            this.setState({ challenge: classesList[Math.floor(Math.random()*classesList.length)]} )
+
+            //console.log("Generate new challenge has been called from the top class");
+        };
+
+
+
+
+
 
 
         componentDidMount() {
@@ -53,12 +69,7 @@ class TopApp extends Component{
 
 
 
-        generateNewChallenge(){
-            //const challenge=classesList[Math.floor(Math.random()*classesList.length)];
-            this.setState({ challenge: classesList[Math.floor(Math.random()*classesList.length)]} )
 
-            //console.log("Generate new challenge has been called from the top class");
-        };
 
         incrementScore(){
             this.setState({score: this.state.score + 1 })
@@ -85,7 +96,8 @@ class TopApp extends Component{
             <span>Challenge is: {this.state.challenge}</span> */}
             <Header
                 score={this.state.score}
-                challenge={this.state.challenge}
+                // challenge={ this.state.challenge}
+                challenge={classListAlphabets[this.state.challenge-1]}
                 count={this.fmtMSS(this.state.count)}
             />
             <App

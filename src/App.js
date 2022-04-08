@@ -116,12 +116,17 @@ const App = (props) => {
 
     
       // Draw mesh
-      const ctx = canvasRef.current.getContext("2d");
 
+
+
+
+       const ctx = canvasRef.current.getContext("2d");
+
+      
       // 5. TODO - Update drawing utility
       // drawSomething(obj, ctx) 
 
-      requestAnimationFrame(()=>{drawRect(boxes[0], classes[0], scores[0], 0.65, videoWidth, videoHeight, ctx)}); 
+      requestAnimationFrame(()=>{drawRect(boxes[0], classes[0], scores[0], 0.5, videoWidth, videoHeight, ctx)}); 
 
       tf.dispose(img)
       tf.dispose(resized)
