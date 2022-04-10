@@ -6,10 +6,10 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 
 
-import Welcome from "./Welcome.js"
-import TopApp from "./TopApp.js"
-import GameOver from "./GameOver.js"
-import Learn from "./Learn.js"
+import Welcome from "./Screens/Welcome.js"
+import Game from "./Screens/Game.js"
+import GameOver from "./Screens/GameOver.js"
+import Learn from "./Screens/Learn.js"
 
 
 
@@ -26,8 +26,8 @@ function MainApp() {
       <Route exact path="/">
         <Welcome />
       </Route>
-      <Route path="/TopApp">
-        <TopApp />
+      <Route path="/Game">
+        <Game />
       </Route>
       <Route path="/GameOver">
         <GameOver />

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import "./Header.css";
-import CountDown from "./CountDown.js"
-import GameOver from "./GameOver.js"
+import GameOver from "./Screens/GameOver.js"
 
 class Header extends Component{
 

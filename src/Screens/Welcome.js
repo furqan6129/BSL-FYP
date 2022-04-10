@@ -15,7 +15,7 @@ render(){
     return (
      
         <div class="background">
-                          <a href="/TopApp" class="button button4">Play</a>
+                          <a href="/Game" class="button button4">Play</a>
                           <a href="/Learn" class="button button5">Learn</a>
 
         </div>

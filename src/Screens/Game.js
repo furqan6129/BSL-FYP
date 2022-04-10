@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import App from "./App.js"
-import Header from "./Header.js"
+import App from "../App.js"
+import Header from "../Header.js"
 import 'bootstrap/dist/css/bootstrap.css';
 import GameOver from "./GameOver.js"
 
@@ -9,7 +9,7 @@ let classesList=Array(1,2,3,4,5);
 let classListAlphabets=Array("A","B","C","D","E","F");
 //let classesList=Array("A","B","C","D","E");
 
-class TopApp extends Component{
+class Game extends Component{
 
         state = {
           score: 0 ,challenge:classesList[Math.floor(Math.random()*classesList.length)], count:60,
@@ -117,4 +117,4 @@ class TopApp extends Component{
 
 
 }
-export default TopApp
+export default Game
