@@ -8,20 +8,11 @@ const labelMap = {
     6:{name:'f', color:'green'}
 }
 
-// let scoreB=0;
-
-
 // Define a drawing function
 export const drawRect = (boxes, classes, scores, threshold, imgWidth, imgHeight, ctx)=>{
 
     for(let i=0; i<=boxes.length; i++){
         if(boxes[i] && classes[i] && scores[i]>threshold){
-
-
-            // if (classes[i]==1){
-            //     scoreB++;
-            // }
-
             // Extract variables
             const [y,x,height,width] = boxes[i]
             const text = classes[i]
@@ -39,5 +30,4 @@ export const drawRect = (boxes, classes, scores, threshold, imgWidth, imgHeight,
             ctx.stroke()
         }
     }
-    // console.log(scoreB);
 }

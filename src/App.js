@@ -25,7 +25,7 @@ const App = (props) => {
 
 
 
- 
+
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
@@ -75,19 +75,8 @@ const App = (props) => {
       const classes = await obj[5].array()
       const scores = await obj[1].array()
 
-      //const temp =await obj[8].array()
-      //console.log(temp)
 
-
-
-       //console.log(classes);
-      //console.log(scores);
        console.log(boxes);
-
-
-      // console.log('Classes are: '+classes[0][0]);//classes are fine
-      //console.log('Scores are: '+scores[0][0]);
-      // console.log('Boxes are:'+boxes[0][0]);
 
 
       let detectedClass=classes[0][0];
@@ -100,25 +89,15 @@ const App = (props) => {
       //console.log("Challenge is "+latestChallenge)
 
 
-      if (detectedClass==latestChallenge && classScore>0.65){
-        //score++;
-        //console.log("About to call the super method");
+      if (detectedClass==latestChallenge && classScore>0.7){
         props.newChallenge();
         props.updateScore();
-        
-
-        
-        //challengeClass=classesList[Math.floor(Math.random()*classesList.length)];   
-        
       }
       
 
 
     
       // Draw mesh
-
-
-
 
        const ctx = canvasRef.current.getContext("2d");
 

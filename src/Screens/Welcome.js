@@ -10,8 +10,6 @@ import "./Welcome.css";
 class Welcome extends Component{
 
 render(){
-  
-
     return (
      
         <div class="background">
@@ -19,8 +17,6 @@ render(){
                           <a href="/Learn" class="button button5">Learn</a>
 
         </div>
-
-
     )
 }
 }

@@ -7,48 +7,29 @@ import GameOver from "./GameOver.js"
 
 let classesList=Array(1,2,3,4,5);
 let classListAlphabets=Array("A","B","C","D","E","F");
-//let classesList=Array("A","B","C","D","E");
+
 
 class Game extends Component{
 
         state = {
-          score: 0 ,challenge:classesList[Math.floor(Math.random()*classesList.length)], count:60,
+          score: 0 ,challenge:classesList[Math.floor(Math.random()*classesList.length)], timer:120,
         };
-
-
 
         generateNewChallenge(){
-            //const challenge=classesList[Math.floor(Math.random()*classesList.length)];
             this.setState({ challenge: classesList[Math.floor(Math.random()*classesList.length)]} )
-
-            //console.log("Generate new challenge has been called from the top class");
         };
-
-
-
-
-
-
 
         componentDidMount() {
             this.timer = setInterval(() => {
-                let { count } = this.state;
+                let { timer: timer } = this.state;
                 this.setState({
-                    count: count - 1
+                    timer: timer - 1
                 })
             }, 1000)
         }
 
-
         componentDidUpdate(prevProps, prevState, snapshot) {
-            //console.log("Score from Countdown is:"+this.props.score)
-    
-            // if (this.state.count===0){
-            //     //this.updateEnd()
-            //     window.location="/GameOver";
-            // }
-    
-            if (prevState.count !== this.state.count && this.state.count === 0) {
+            if (prevState.timer !== this.state.timer && this.state.timer === 0) {
                 clearInterval(this.timer);
     
             }
@@ -73,15 +54,12 @@ class Game extends Component{
 
         incrementScore(){
             this.setState({score: this.state.score + 1 })
-            // window.location="/";
-
-            
         }
 
 
     render(){
 
-        if (this.state.count===0){
+        if (this.state.timer===0){
 
             return (
                 <GameOver score={this.state.score}></GameOver>
@@ -98,14 +76,13 @@ class Game extends Component{
                 score={this.state.score}
                 // challenge={ this.state.challenge}
                 challenge={classListAlphabets[this.state.challenge-1]}
-                count={this.fmtMSS(this.state.count)}
+                count={this.fmtMSS(this.state.timer)}
             />
             <App
             challenge={this.state.challenge}
             score={this.state.score}
             newChallenge={() => this.generateNewChallenge()}
             updateScore={() => this.incrementScore()}
-            
             />
         </div>
         )

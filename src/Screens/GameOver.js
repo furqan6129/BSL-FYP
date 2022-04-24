@@ -11,15 +11,19 @@ class GameOver extends Component{
 
 render(){
   
-
     return (
      
         <div class="main-body">
-                     <h1>Game Over!<br></br> You Scored: {this.props.score}</h1>
+                     <h1>Game Over!</h1>
+                     <br></br>
+                     <h1 >You Scored: {this.props.score}</h1>
         </div>
 
 
     )
 }
+
 }
+
+
 export default GameOver
