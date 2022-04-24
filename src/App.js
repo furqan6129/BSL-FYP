@@ -17,7 +17,7 @@ const App = (props) => {
 
 
   challenge2=props.challenge;
-  //console.log("Challenge 2 is: "+challenge2);
+
 
   const getNewChallenge =() =>{
     return challenge2;
@@ -84,9 +84,6 @@ const App = (props) => {
       let classScore=scores[0][0];
       
       var latestChallenge=getNewChallenge();
-      //console.log("Score printing from the App is"+ score)
-      //console.log("Challenge from the App is"+challenge)
-      //console.log("Challenge is "+latestChallenge)
 
 
       if (detectedClass==latestChallenge && classScore>0.7){
