@@ -15,11 +15,8 @@ render(){
     return (
      
         <div class="background2">
-                         
-
+                        
         </div>
-
-
     )
 }
 }

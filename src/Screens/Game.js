@@ -43,14 +43,7 @@ class Game extends Component{
         constructor(){
             super();
             this.generateNewChallenge=this.generateNewChallenge.bind(this);
-
-
-
         }
-
-
-
-
 
         incrementScore(){
             this.setState({score: this.state.score + 1 })
@@ -70,11 +63,9 @@ class Game extends Component{
         return (
 
         <div>
-            {/* Score is: {this.state.score}
-            <span>Challenge is: {this.state.challenge}</span> */}
+
             <Header
                 score={this.state.score}
-                // challenge={ this.state.challenge}
                 challenge={classListAlphabets[this.state.challenge-1]}
                 count={this.fmtMSS(this.state.timer)}
             />
@@ -88,10 +79,6 @@ class Game extends Component{
         )
     }
     }
-
-
-
-
 
 }
 export default Game

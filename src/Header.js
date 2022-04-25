@@ -44,10 +44,7 @@ this.getData();
 else{
 
     return (
-        // <nav > Score is: {this.props.score}
-        
-        // <span>Challenge is: {this.props.challenge}</span>
-        // </nav>
+
         <div class="container">
         <header class="d-flex justify-content-center py-3;">
 
