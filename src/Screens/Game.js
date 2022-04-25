@@ -5,14 +5,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import GameOver from "./GameOver.js"
 
 
-let classesList=Array(1,2,3,4,5);
+let classesList=Array(1,2,3,4,5,6);
 let classListAlphabets=Array("A","B","C","D","E","F");
 
 
 class Game extends Component{
 
         state = {
-          score: 0 ,challenge:classesList[Math.floor(Math.random()*classesList.length)], timer:120,
+          score: 0 ,challenge:classesList[Math.floor(Math.random()*classesList.length)], timer:60,
         };
 
         generateNewChallenge(){
